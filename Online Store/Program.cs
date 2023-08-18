@@ -17,6 +17,7 @@ option.SignIn.RequireConfirmedAccount =false
 
 
 builder.Services.AddTransient<ICategory, CategoryServices>();
+builder.Services.AddTransient<ISubCategory, SubCategoryServices>();
 
 var app = builder.Build();
 

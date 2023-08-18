@@ -4,9 +4,9 @@
     {
         public int SubCategoryId { get; set; }
         public string SubCategoryName { get; set; } = null!;
-        public Category Category { get; set; } = null!;
+        public Category Category { get; set; } 
         public int CategoryId { get; set; }
-        public List<Product> products { get; set; } = null!;
+        public List<Product> products { get; set; } 
 
 
     }

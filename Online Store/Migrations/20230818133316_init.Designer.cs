@@ -12,7 +12,7 @@ using Online_Store.Domain;
 namespace Online_Store.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230818112513_init")]
+    [Migration("20230818133316_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -311,7 +311,10 @@ namespace Online_Store.Migrations
             modelBuilder.Entity("Online_Store.Domain.Data.SubCategory", b =>
                 {
                     b.Property<int>("SubCategoryId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SubCategoryId"));
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
@@ -321,6 +324,8 @@ namespace Online_Store.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("SubCategoryId");
+
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("SubCategory", "Schema");
                 });
@@ -431,7 +436,7 @@ namespace Online_Store.Migrations
                 {
                     b.HasOne("Online_Store.Domain.Data.Category", "Category")
                         .WithMany("SubCategories")
-                        .HasForeignKey("SubCategoryId")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

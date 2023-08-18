@@ -203,7 +203,8 @@ namespace Online_Store.Migrations
                 schema: "Schema",
                 columns: table => new
                 {
-                    SubCategoryId = table.Column<int>(type: "int", nullable: false),
+                    SubCategoryId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     SubCategoryName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -211,8 +212,8 @@ namespace Online_Store.Migrations
                 {
                     table.PrimaryKey("PK_SubCategory", x => x.SubCategoryId);
                     table.ForeignKey(
-                        name: "FK_SubCategory_Category_SubCategoryId",
-                        column: x => x.SubCategoryId,
+                        name: "FK_SubCategory_Category_CategoryId",
+                        column: x => x.CategoryId,
                         principalSchema: "Schema",
                         principalTable: "Category",
                         principalColumn: "CategoryId",
@@ -361,6 +362,12 @@ namespace Online_Store.Migrations
                 schema: "Schema",
                 table: "ProductOrder",
                 column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SubCategory_CategoryId",
+                schema: "Schema",
+                table: "SubCategory",
+                column: "CategoryId");
         }
 
         /// <inheritdoc />

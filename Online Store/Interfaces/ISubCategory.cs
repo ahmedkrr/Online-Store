@@ -4,7 +4,7 @@ namespace Online_Store.Interfaces
 {
     public interface ISubCategory
     {
-        public void CreateProudct(SubCategory subCategory);
+        public void CreateSubCategory(SubCategory subCategory);
         public List<SubCategory> subCategory();
 
         public SubCategory GetSubCategoryyById(int id);
