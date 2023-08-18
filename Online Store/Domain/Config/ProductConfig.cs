@@ -10,6 +10,7 @@ namespace Online_Store.Domain.Config
         {
 
             builder.HasKey(x => x.ProudctId);
+            builder.Property(x => x.Photo).IsRequired(false);
             
         }
 
