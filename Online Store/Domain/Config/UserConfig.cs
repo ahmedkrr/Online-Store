@@ -8,7 +8,7 @@ namespace Online_Store.Domain.Config
     {
         public void Configure(EntityTypeBuilder<User> builder)
         { 
-            builder.HasKey(x => x.Id);
+            builder.HasKey(x => x.UserId);
             builder.HasMany(x => x.Orders).WithOne(x => x.User).HasForeignKey(x => x.UserId);
         }
     }

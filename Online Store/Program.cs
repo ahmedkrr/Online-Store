@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Online_Store.Domain;
 
@@ -8,6 +9,9 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ApplicationDbContext>(option =>
 option.UseSqlServer(builder.Configuration.GetConnectionString("mycon")));
+builder.Services.AddIdentity<IdentityUser,IdentityRole>(option =>
+option.SignIn.RequireConfirmedAccount =false
+).AddEntityFrameworkStores<ApplicationDbContext>();
 
 var app = builder.Build();
 
