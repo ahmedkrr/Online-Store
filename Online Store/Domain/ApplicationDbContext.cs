@@ -25,5 +25,6 @@ namespace Online_Store.Domain
             modelBuilder.ApplyConfiguration(new ProudctOrderConfig());
 
         }
+        public DbSet<Online_Store.Domain.Data.Category>? Category { get; set; }
     }
     }

@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Online_Store.Domain;
+using Online_Store.Interfaces;
+using Online_Store.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,9 @@ option.UseSqlServer(builder.Configuration.GetConnectionString("mycon")));
 builder.Services.AddIdentity<IdentityUser,IdentityRole>(option =>
 option.SignIn.RequireConfirmedAccount =false
 ).AddEntityFrameworkStores<ApplicationDbContext>();
+
+
+builder.Services.AddTransient<ICategory, CategoryServices>();
 
 var app = builder.Build();
 
