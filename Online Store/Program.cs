@@ -19,6 +19,7 @@ option.SignIn.RequireConfirmedAccount =false
 builder.Services.AddTransient<ICategory, CategoryServices>();
 builder.Services.AddTransient<ISubCategory, SubCategoryServices>();
 builder.Services.AddTransient<IProduct, ProductServices>();
+builder.Services.AddTransient<ICustomer, CustomerServices>();
 
 var app = builder.Build();
 
@@ -34,11 +35,11 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();    
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Customer}/{action=Login}/{id?}");
 
 app.Run();
