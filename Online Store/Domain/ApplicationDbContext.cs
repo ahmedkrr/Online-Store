@@ -28,5 +28,7 @@ namespace Online_Store.Domain
         public DbSet<Online_Store.Domain.Data.Category>? Category { get; set; }
         public DbSet<Online_Store.Domain.Data.SubCategory>? SubCategory { get; set; }
         public DbSet<Online_Store.Domain.Data.Product>? Product { get; set; }
+
+        public DbSet<Online_Store.Domain.Data.Customer>? customers { get; set; }    
     }
     }

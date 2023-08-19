@@ -25,6 +25,21 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+
+                         @if (User?.Identity?.IsAuthenticated == true)
+                            {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Logout">Account Info</a>
+                            </li>
+                            }
+                        
+                        
+                            @if (User?.Identity?.IsAuthenticated == true)
+                        {
+                            <li class="nav-item">
+                                <a asp-controller="Customer" asp-action="Logout" class="btn btn-danger">Logout</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
@@ -36,11 +51,11 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+  @*  <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2023 - Online_Store - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-    </footer>
+    </footer>*@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
